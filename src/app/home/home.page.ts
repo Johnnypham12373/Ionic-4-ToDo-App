@@ -20,6 +20,11 @@ export class HomePage {
       this.taskName = '';
     }
   }
+
+  addTaskByName(taskName) {
+    if (taskName.length > 0) this.taskList.push(taskName);
+  }
+
   deleteTask(index) {
     this.taskList.splice(index, 1);
   }
