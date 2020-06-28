@@ -8,14 +8,14 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-input
+    <ion-input #taskNameText
       type="text"
       placeholder="Enter task"
       [(ngModel)]="taskName"
       id = "taskName"
     ></ion-input>
     <div class="item-note" item-end>
-      <ion-button color="primary" (click)="addTask()">
+      <ion-button #addTaskButton color="primary" (click)="addTask()">
         <ion-icon name="add"></ion-icon>
       </ion-button>
     </div>
@@ -32,4 +32,5 @@
       </ion-item>
     </ion-list>
   </div>
+  <alan-button #alanBtnEl alan-key="98258b2d682f2614a82cfaa63d517e892e956eca572e1d8b807a3e2338fdd0dc/prod"></alan-button>.
 </ion-content>

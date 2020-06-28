@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import {AppComponent} from '../app.component'
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements AfterViewInit {
+
+  @ViewChild('alanBtnEl', {static:false}) alanBtnComponent: ElementRef<HTMLAlanButtonElement>;
 
   taskName: any = '';
   taskList = [];
@@ -29,4 +30,14 @@ export class HomePage {
     this.taskList.splice(index, 1);
   }
 
+  ngAfterViewInit(): void {
+    this.alanBtnComponent.nativeElement.addEventListener('command', (data) => {
+      const commandData = (<CustomEvent> data).detail;
+
+      if(commandData.command === 'taskName') {
+        console.log('In taskName')
+        this.addTaskByName(commandData.name)
+      }
+    })
+  }
 }
