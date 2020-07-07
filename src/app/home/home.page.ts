@@ -8,7 +8,6 @@ import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 export class HomePage implements AfterViewInit {
 
   @ViewChild('alanBtnEl', {static:false}) alanBtnComponent: ElementRef<HTMLAlanButtonElement>;
-
   taskName: any = '';
   taskList = [];
 
@@ -17,17 +16,17 @@ export class HomePage implements AfterViewInit {
   addTask() {
     if (this.taskName.length > 0) {
       let task = this.taskName;
-      this.taskList.push(task);
+      this.taskList.push(this.taskName);
       this.taskName = '';
     }
   }
 
   addTaskByName(taskName) {
-    if (taskName.length > 0) this.taskList.push(taskName);
+    if (taskName.length > 0) this.taskList.push(taskName)
   }
 
-  deleteTask(index) {
-    this.taskList.splice(index, 1);
+  deleteTask(name) {
+    this.taskList.splice(name);
   }
 
   ngAfterViewInit(): void {
@@ -37,6 +36,10 @@ export class HomePage implements AfterViewInit {
       if(commandData.command === 'taskName') {
         console.log('In taskName')
         this.addTaskByName(commandData.name)
+      }
+      if(commandData.command === "deleteTask") {
+        console.log('In taskName')
+        this.deleteTask(commandData.name)
       }
     })
   }
