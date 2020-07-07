@@ -22,7 +22,7 @@
   </ion-item>
   <div padding>
     <ion-list>
-      <ion-item *ngFor="let todo of taskList; let i = taskName">
+      <ion-item *ngFor="let todo of taskList; let i = index">
         {{todo}}
         <div class="item-note" slot="end">
           <ion-button color="danger" clear (click)="deleteTask(i)">

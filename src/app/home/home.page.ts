@@ -14,6 +14,7 @@ export class HomePage implements AfterViewInit {
   constructor() {}
 
   addTask() {
+    console.log(this.taskName);
     if (this.taskName.length > 0) {
       let task = this.taskName;
       this.taskList.push(this.taskName);
@@ -25,7 +26,11 @@ export class HomePage implements AfterViewInit {
     if (taskName.length > 0) this.taskList.push(taskName)
   }
 
-  deleteTask(name) {
+  deleteTask(index) {
+    this.taskList.splice(index, 1);
+  }
+
+  deleteTaskByName(name) {
     const i = this.taskList.indexOf(name);
     if (i > -1) {
       console.log(i);
@@ -45,7 +50,7 @@ export class HomePage implements AfterViewInit {
       }
       if(commandData.command === "deleteTask") {
         console.log('In taskName')
-        this.deleteTask(commandData.name)
+        this.deleteTaskByName(commandData.name)
       }
     })
   }
