@@ -26,7 +26,13 @@ export class HomePage implements AfterViewInit {
   }
 
   deleteTask(name) {
-    this.taskList.splice(name);
+    const i = this.taskList.indexOf(name);
+    if (i > -1) {
+      console.log(i);
+      console.log(this.taskList);
+      this.taskList.splice(i, 1);
+      console.log(this.taskList);
+    }
   }
 
   ngAfterViewInit(): void {
