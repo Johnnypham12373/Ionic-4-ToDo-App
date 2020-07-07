@@ -1,1 +1,12 @@
-
+ion-toolbar{
+    --ion-color-primary: #3880ff;
+    --background: var(--primary, #3880ff);
+}
+ion-item{
+    --border-radius: 10px;
+    --border-color: #3880ff;
+    --border-style: inset;
+    --color-activated: #3dc2ff;
+    --background: var(--primary, #3dc2ff);
+    font-size: 16px;
+}
