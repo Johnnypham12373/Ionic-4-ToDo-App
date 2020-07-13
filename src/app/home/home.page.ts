@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
-
+import { AlertController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,8 +11,21 @@ export class HomePage implements AfterViewInit {
   taskName: any = '';
   taskList = [];
 
-  constructor() {}
+  constructor(private alertCtrl: AlertController) {}
 
+  information() {
+    this.alertCtrl.create({
+      header: 'Commands',
+      message: 'To add task: "Add Task: (your task)" <br/> To delete task: "Delete Task: (your task)"',
+      buttons: [
+        {
+          text: 'Cancel'
+        },
+      ]
+    }).then((alert) => {
+      alert.present();
+    });
+  }
   addTask() {
     console.log(this.taskName);
     if (this.taskName.length > 0) {
@@ -25,6 +38,7 @@ export class HomePage implements AfterViewInit {
   addTaskByName(taskName) {
     if (taskName.length > 0) this.taskList.push(taskName)
   }
+  
 
   deleteTask(index) {
     this.taskList.splice(index, 1);
